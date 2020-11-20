@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>申请请假</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+		 crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		 crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		 crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		 crossorigin="anonymous"></script>
+		<script type="application/javascript" src="../js/jquery-2.1.1.min.js"></script>
+	</head>
+	<body>
+		<table class="table table-hover">
+			<tr>
+				<td>请假人</td>
+				<td><span id="username"></span></td>
+			</tr>
+			<tr>
+				<td>请假天数</td>
+				<td><input type="text" id="holidayCount" /></td>
+			</tr>
+			<tr>
+				<td>请假原因</td>
+				<td><textarea cols="20" rows="10" id="reson"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<button type="button" class="btn btn-primary" onclick="wxsubmit()">提&nbsp;&nbsp;&nbsp;交</button>
+				</td>
+			</tr>
+		</table>
+	</body>
+	<script type="application/javascript">
+		var username;
+		$(function() {
+			username = sessionStorage.getItem("username");
+			$("#username").html(username);
+		})
+
+		function wxsubmit() {
+			var holidayCount = $("#holidayCount").val();
+			var reson = $("#reson").val();
+			param={
+				'holidayName': username,
+				'holidayCount': holidayCount,
+				'holidayReson': reson,
+				'taskKey': 'holiday-request'
+			}
+			$.ajax({
+				url: '/flowable/userTask/createHolidayTask',
+				contentType: "application/json;charset=UTF-8",
+				data: JSON.stringify(param),
+				dataType:"JSON",
+				type: 'POST',
+				success: function(data) {
+					if (data["code"] == "0000") {
+						alert("创建请假任务成功");
+						location.href = "requestList.html";
+					} else {
+						alert(data["msg"]);
+						return;
+					}
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(XMLHttpRequest.readyState + XMLHttpRequest.status + XMLHttpRequest.responseText);
+				}
+			})
+		}
+	</script>
+</html>

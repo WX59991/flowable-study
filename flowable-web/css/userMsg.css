@@ -1,0 +1,64 @@
+.wxcontainer {
+	background: white;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.wxleftBar {
+	width: 18%;
+	height: 100%;
+	background: #50a3a2;
+	background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+	background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+	opacity: 0.8;
+	float: left;
+	border: darkgreen 2px solid;
+}
+
+.wxtop {
+	width: 81%;
+	height: 10%;
+	background: #50a3a2;
+	background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+	background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+	opacity: 0.8;
+	float: left;
+	border: darkgreen 2px solid;
+}
+
+.wxtable {
+	width: 81%;
+	height: 89%;
+	background: white;
+	float: left;
+}
+
+.wx_leftbar_title {
+	width: 100%;
+	height: 9.7%;
+	border-bottom: darkgreen 2px solid;
+	font-size: 30px;
+	background: #50A3A2;
+	text-align: center;
+}
+
+.wxfirst {
+	width: 100%;
+	height: 40px;
+	font-size: 20px;
+	border-bottom: darkgreen 1px solid;
+	line-height: 40px;
+	text-align: center;
+}
+
+.wxfirst:hover {
+	background: #50A3A2;
+}
+.wxusermsg{
+	float: right;
+	margin-right: 10px;
+	margin-top: 30px;
+}
