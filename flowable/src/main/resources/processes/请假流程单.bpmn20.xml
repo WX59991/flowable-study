@@ -12,8 +12,16 @@
     <sequenceFlow id="sid-BBB93751-7881-4CF5-B2C5-8CBB989BEDC1" sourceRef="beginTaskID" targetRef="managerTask"></sequenceFlow>
     <exclusiveGateway id="managerJudgeTask"></exclusiveGateway>
     <sequenceFlow id="sid-73C6764D-137D-45F0-838E-2B65509BB356" sourceRef="managerTask" targetRef="managerJudgeTask"></sequenceFlow>
-    <endEvent id="sid-B1DBCCBC-90E0-493E-AD3F-2533726BD084"></endEvent>
-    <endEvent id="sid-A1B7F2D9-0966-4ED2-B478-D18D777ABFCF"></endEvent>
+    <endEvent id="sid-B1DBCCBC-90E0-493E-AD3F-2533726BD084">
+      <extensionElements>
+        <flowable:taskListener event="complete" class="com.study.flowable.listener.EndListener"></flowable:taskListener>
+      </extensionElements>
+    </endEvent>
+    <endEvent id="sid-A1B7F2D9-0966-4ED2-B478-D18D777ABFCF">
+      <extensionElements>
+        <flowable:taskListener event="complete" class="com.study.flowable.listener.EndListener"></flowable:taskListener>
+      </extensionElements>
+    </endEvent>
     <sequenceFlow id="sid-AD991EA5-0ED0-4D7D-B525-A80EBCF0776E" sourceRef="managerJudgeTask" targetRef="sid-B1DBCCBC-90E0-493E-AD3F-2533726BD084">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${checkResult=='驳回'}]]></conditionExpression>
     </sequenceFlow>
