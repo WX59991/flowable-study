@@ -6,8 +6,9 @@
 # 2.部署方式  
   环境准备:nginx  
   1.把项目下载下来  
-  2.把后端项目用idea或别的开发工具打开，启动，web端口配置的是8090  
-  3.在nginx配置文件中配置，配置文件如下：
+  2.把后端项目用idea或别的开发工具打开，在本地mysql创建数据库test,并运行resource/database下的sql文件  
+  3.启动，web端口配置的是8090  
+  4.在nginx配置文件中配置，配置文件如下：  
   http {  
       include mime.types;  
       default_type  application/octet-stream;  
