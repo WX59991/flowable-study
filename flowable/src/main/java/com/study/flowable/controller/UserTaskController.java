@@ -66,7 +66,7 @@ public class UserTaskController {
      */
     @LoggerAnnotation(isVerfyUtil = true)
     @PostMapping("/createHolidayTask")
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public JSONObject createHolidayTask(@RequestBody  HolidayEntity holidayEntity,BindingResult bindingResult){
         HashMap<String,Object> map=new HashMap<>();
         map.put("beginTaskID",holidayEntity.getHolidayName());
